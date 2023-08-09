@@ -28,6 +28,9 @@ listint_t *insert_node(listint_t **head, int number)
 		current = current->next;/*move ptr*/
 		idx++;
 	}
+	/*set value for idx*/
+	if (idx != 0)
+		idx -= 1;
 
 	/*allocate memory*/
 	new_node = malloc(sizeof(listint_t));
@@ -39,7 +42,7 @@ listint_t *insert_node(listint_t **head, int number)
 
 	/*get previous node*/
 	prev_node = *head;
-	for (index = 0; index < (idx - 1); index++)
+	for (index = 0; index < idx ; index++)
 	{
 		if (prev_node->next == NULL)
 			return (NULL);
