@@ -3,4 +3,4 @@
 import sys
 
 sys.stdout.write("#pythoniscool")
-print()
+sys.stdout.write('\n')
