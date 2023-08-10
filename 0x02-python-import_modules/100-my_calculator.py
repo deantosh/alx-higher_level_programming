@@ -7,12 +7,19 @@ if __name__ == "__main__":
 
     args = sys.argv
     n = len(args) - 1
+    status = 0
 
     if n != 3:
         print("Usage: {} <a> <operator> <b>".format(args[0]))
         exit(1)
 
-    elif (args[2] == '+' or args[2] == '-' or args[2] == '*' or args[2] == '/'):
+    # check if operator is valid
+    operators = "+-*/"
+    for o in operators:
+        if args[2] == o:
+            status = 1
+
+    if status == 1:
         a = int(args[1])
         o = args[2]
         b = int(args[3])
@@ -26,7 +33,6 @@ if __name__ == "__main__":
         if o == '/':
             print("{} {} {}= {}".format(a, o, b, div(a, b)))
         exit(0)
-
     else:
         print("Unknown operator. Available operators: +, -, *, /")
         exit(1)
