@@ -2,8 +2,9 @@
 
 def print_reversed_list_integer(my_list=[]):
 
-    # reverse the order of list items
-    reversed_list = reversed(my_list)
+    if my_list:
+        # reverse the order of list items
+        reversed_list = reversed(my_list)
 
-    for i in reversed_list:
-        print('{:d}'.format(i))
+        for i in reversed_list:
+            print('{:d}'.format(i))
