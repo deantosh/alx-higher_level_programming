@@ -2,9 +2,8 @@
 
 def print_reversed_list_integer(my_list=[]):
 
-    # get last index of the list
-    i = len(my_list) - 1
+    # reverse the order of list items
+    reversed_list = reversed(my_list)
 
-    while i >= 0:
-        print('{:d}'.format(my_list[i]))
-        i = i - 1
+    for i in reversed_list:
+        print('{:d}'.format(i))
