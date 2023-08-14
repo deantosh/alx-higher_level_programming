@@ -13,39 +13,60 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *current_ptr = *head;
-	listint_t *reversed_ptr = reversed_list(head);
+	listint_t *fast_ptr  = *head, *slow_ptr = *head;
+	listint_t *second_half, *first_half = *head;
 
+	/*if list is empty or has a single value*/
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
-
-	/*start comparing values*/
-	while (current_ptr && reversed_ptr)
+	while (1)
 	{
-		if (current_ptr->n == reversed_ptr->n)
-			continue;
-		else
-			return (0);
-
-		current_ptr = current_ptr->next;
-		reversed_ptr = reversed_ptr->next;
+		fast_ptr = fast_ptr->next->next; /*move twice*/
+		/*if the list is even*/
+		if (fast_ptr == NULL)
+		{
+			/*start of 2nd part of list*/
+			second_half = slow_ptr->next;
+			break;
+		}
+		/*if the list is odd*/
+		if (fast_ptr->next == NULL)
+		{
+			/*start of the 2nd part of list*/
+			second_half = slow_ptr->next->next;
+			break;
+		}
+		slow_ptr = slow_ptr->next; /*move once*/
 	}
 
-	return (1);
+	reversed_list(&second_half); /*reverse the second part of the list*/
+	while (first_half && second_half)
+	{
+		if (first_half->n == second_half->n)
+		{
+			first_half = first_half->next;
+			second_half = second_half->next;
+		}
+		else
+			return (0);
+	}
+	if (second_half == NULL)
+		return (1);
+	return (0);
 }
 
 /**
  * reversed_list - Reverses a singly linked list.
  * @head:  A pointer to the singly linked list.
  *
- * Return: A pointer to the singly linked list.
+ * Return: void.
  */
-listint_t *reversed_list(listint_t **head)
+void reversed_list(listint_t **head)
 {
 	listint_t *prev = NULL, *next = NULL;
 	listint_t *current = *head;
 
-	while (!current)
+	while (current != NULL)
 	{
 		next = current->next;
 		current->next = prev;
@@ -53,6 +74,4 @@ listint_t *reversed_list(listint_t **head)
 		current = next;
 	}
 	*head = prev;
-
-	return (*head);
 }
