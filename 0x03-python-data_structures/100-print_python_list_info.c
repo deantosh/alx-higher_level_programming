@@ -22,7 +22,7 @@ void print_python_list_info(PyObject *p)
 	PyListObject *obj = (PyListObject *)p; /*cast*/
 	int i = 0;
 
-	printf("[*] Size of the python List = %li\n", list_size);
+	printf("[*] Size of the Python List = %li\n", list_size);
 	printf("[*] Allocated = %li\n", obj->allocated);
 
 	/*loop though list to print items*/
