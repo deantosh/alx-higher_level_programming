@@ -27,11 +27,11 @@ if __name__ == "__main__":
         if o == '+':
             print("{} {} {} = {}".format(a, o, b, add(a, b)))
         if o == '-':
-            print("{} {} {}= {}".format(a, o, b, sub(a, b)))
+            print("{} {} {} = {}".format(a, o, b, sub(a, b)))
         if o == '*':
-            print("{} {} {}= {}".format(a, o, b, mul(a, b)))
+            print("{} {} {} = {}".format(a, o, b, mul(a, b)))
         if o == '/':
-            print("{} {} {}= {}".format(a, o, b, div(a, b)))
+            print("{} {} {} = {}".format(a, o, b, div(a, b)))
         exit(0)
     else:
         print("Unknown operator. Available operators: +, -, * and /")
