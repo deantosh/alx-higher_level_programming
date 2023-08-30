@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+# author - Deantosh Daiddoh
+"""represents a square"""
+
+
 class Square:
-    """represents a square"""
+    """does nothing"""
     pass
