@@ -11,6 +11,10 @@ class Node:
                 data: the node data
                 next_node: reference to the next node
         """
+        if not isinstance(self.__data, int):
+            raise TypeError("data must be an integer")
+        if (value is not None and not isinstance(value, Node)):
+            raise TypeError("next_node must be a Node object")
         self.__data = data
         self.__next_node = next_node
 
@@ -44,7 +48,7 @@ class Node:
 
 class SinglyLinkedList:
     def __init__(self):
-        """initialize class"""
+        """initialize singly linked list"""
         self.head = None
 
     def __str__(self):
