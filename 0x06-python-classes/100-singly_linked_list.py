@@ -12,9 +12,9 @@ class Node:
                 data: the node data
                 next_node: reference to the next node
         """
-        if not isinstance(self.__data, int):
+        if not isinstance(data, int):
             raise TypeError("data must be an integer")
-        if (value is not None and not isinstance(value, Node)):
+        if (value is not None and not isinstance(next_node, Node)):
             raise TypeError("next_node must be a Node object")
         self.__data = data
         self.__next_node = next_node
