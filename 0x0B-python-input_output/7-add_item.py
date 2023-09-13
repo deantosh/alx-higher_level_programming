@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""script: adds all arguments to a python list
+   and save them to a file.
+"""
+
+
 import sys
 
 if __name__ == "__main__":
