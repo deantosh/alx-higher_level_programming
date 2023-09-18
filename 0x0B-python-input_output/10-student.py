@@ -16,11 +16,7 @@ class Student:
         # create a new dict
         my_dict = {}
 
-        if (attrs):
-            for name in attrs:
-                for key in self.__dict__:
-                    if name == key:
-                        my_dict.update({key: self.__dict__[key]})
-            return my_dict
-        else:
-            return self.__dict__
+        if (type(attrs) == list and
+                all(type(item) == str for item in attrs)):
+            return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
+        return self.__dict__
