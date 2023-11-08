@@ -7,5 +7,4 @@ def to_json_string(my_obj):
     """return:
               json string
     """
-    my_str = json.dumps(my_obj)
-    return my_str
+    return json.dumps(my_obj)
