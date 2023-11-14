@@ -21,7 +21,7 @@ Case valid values:
 
   parse only the first name to the function:
         >>> say_my_name("desy")
-	My name is desy
+	My name is desy 
 
 Case invalid values:
 
