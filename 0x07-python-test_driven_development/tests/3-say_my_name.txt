@@ -1,0 +1,46 @@
+Test case for 3-say_my_name module
+----------------------------------
+----------------------------------
+
+Module defines a function ``say_my_name(first_name, last_name="")``
+
+Usage
+------
+------
+
+``say_my_name(...)`` prints "My name is <first_name> <last_name>"
+
+Import function from module:
+    >>> say_my_name = __import__("3-say_my_name").say_my_name
+
+Case valid values:
+
+  Parse first name and last name strings to function:
+        >>> say_my_name("Deantosh", "Daiddoh")
+	My name is Deantosh Daiddoh
+
+  parse only the first name to the function:
+        >>> say_my_name("desy")
+	My name is desy
+
+Case invalid values:
+
+  parse non-string value as first_name:
+        >>> say_my_name(0, "daiddoh")
+	Traceback (most recent call last):
+	    ...
+	TypeError: first_name must be a string
+
+  parse non-string value as last_name:
+        >>> say_my_name("deantosh", (1, 2))
+	Traceback (most recent call last):
+	    ...
+	TypeError: last_name must be a string
+
+Case no value:
+
+  call function without any values:
+        >>> say_my_name()
+	Traceback (most recent call last):
+	    ...
+	TypeError: say_my_name() missing 1 required positional argument: 'first_name'
