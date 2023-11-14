@@ -1,0 +1,53 @@
+Test case for 4-print_square module
+-----------------------------------
+-----------------------------------
+
+Module defines a function that prints a square with the # character
+
+USAGE
+-----
+-----
+
+``print_square(size)`` takes in the size of square and prints it.
+
+import function from module:
+    >>> print_square = __import__("4-print_square").print_square
+
+Case valid values:
+
+  parse a valid value for the square:
+        >>> print_square(2)
+	##
+	##
+
+  parse zero value (size = 0):
+    >> print_square(0)
+
+
+Case invalid value:
+
+  parse not integer value for the square (size = 3.2):
+        >>> print_square(3.2)
+	Traceback (most recent call last):
+	         ...
+	TypeError: size must be an integer
+
+  parse a list as size value for the square (size = (1, 2)):
+        >>> print_square((1, 2))
+	Traceback (most recent call last):
+	          ...
+        TypeError: size must be an integer
+
+  parse size value less than 0 for the square (size = -3):
+        >>> print_square(-3)
+	Traceback (most recent call last):
+	          ...
+	ValueError: size must be >= 0
+
+Case no values:
+
+  parse no value to function (size=""):
+        >>> print_square()
+	Traceback (most recent call last):
+	          ...
+	TypeError: print_square() missing 1 required positional argument: 'size'
