@@ -52,3 +52,15 @@ Case invalid divisor:
 	Traceback (most recent call last):
 	          ...
 	ZeroDivisionError: division by zero
+
+Case missing arguments:
+
+  >>> matrix_divided([[1, 2]])
+  Traceback (most recent call last):
+            ...
+  TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+  >>> matrix_divided()
+  Traceback (most recent call last):
+            ...
+  TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
