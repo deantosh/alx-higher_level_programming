@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Module defines a class Square that inherits from Rectangle class"""
 
 
