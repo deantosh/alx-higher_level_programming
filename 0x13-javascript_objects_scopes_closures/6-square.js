@@ -12,7 +12,7 @@ class Square extends SquarePrev {
       }
     } else {
       super.print();
-    } 
+    }
   }
 }
 module.exports = Square;
