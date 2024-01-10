@@ -6,13 +6,13 @@ class Square extends SquarePrev {
       for (let i = 0; i < this.height; i++) {
         let rect = '';
         for (let j = 0; j < this.width; j++) {
-          rect += 'C';
+          rect += c;
         }
         console.log(rect);
       }
     } else {
       super.print();
-    }
+    } 
   }
 }
 module.exports = Square;
