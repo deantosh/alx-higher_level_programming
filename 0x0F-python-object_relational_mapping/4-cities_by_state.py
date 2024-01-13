@@ -22,11 +22,13 @@ if __name__ == '__main__':
     query = """
         SELECT cities.id, cities.name, states.name
         FROM cities
-        INNER JOIN states
+        JOIN states
         ON cities.id = states.id
+        ORDER BY cities.id
     """
     cursor.execute(query)
     # Fetch and print results
     results = cursor.fetchall()
-    for row in results:
-        print(row)
+    if results is not None:
+        for row in results:
+            print(row)
