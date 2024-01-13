@@ -23,7 +23,7 @@ if __name__ == '__main__':
     # cursor obect to connect to database
     cursor = conn.cursor()
     # Execute SQL queries
-    query = "SELECT * FROM states WHERE name REGEXP '^N'"
+    query = "SELECT * FROM states WHERE name LIKE 'N%'"
     cursor.execute(query)
     # Fetch results
     results = cursor.fetchall()
