@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-This script lists a states from the
-database hbtn_0e_0_usa.
+This script takes in an argument and displays all
+values in the states table of hbtn_0e_0_usa where
+name matches the argument
 """
 
 
@@ -24,8 +25,9 @@ if __name__ == '__main__':
     cursor = conn.cursor()
     # Set the variabe in python
     state_name = argv[4]
-    query = "SELECT * FROM states WHERE name LIKE %s"
-    cursor.execute(query, (state_name,))
+    # Execute query
+    query = "SELECT * FROM states WHERE name LIKE '{}%'".format(state_name)
+    cursor.execute(query)
     # Fetch results
     results = cursor.fetchall()
     # Print results
