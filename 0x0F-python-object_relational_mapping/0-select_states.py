@@ -2,7 +2,7 @@
 import sys
 import MySQLdb
 
-if len(sys.argv) == 4:
+if __name__ == '__main__':
     # db config credentials
     db_config = {
         'host': 'localhost',
