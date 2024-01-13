@@ -24,7 +24,7 @@ if __name__ == '__main__':
         FROM cities
         JOIN states
         ON cities.id = states.id
-        ORDER BY cities.id
+        ORDER BY cities.id ASC
     """
     cursor.execute(query)
     # Fetch and print results
@@ -32,3 +32,6 @@ if __name__ == '__main__':
     if results is not None:
         for row in results:
             print(row)
+    # close connections to db
+    cursor.close()
+    conn.close()
