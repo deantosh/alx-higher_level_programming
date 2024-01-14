@@ -11,7 +11,7 @@ from model_state import Base, State
 
 def create_db_engine(username, password, database):
     """Creates and returns database engine"""
-    # creatae connection string
+    # creata connection string
     conn_string = "mysql://{}:{}@{}:{}/{}".format(
         username, password, 'localhost', 3306, database
     )
@@ -43,6 +43,8 @@ if __name__ == '__main__':
     # Print first state
     if first_state:
         print("{}: {}".format(first_state.id, first_state.name))
+    else:
+        print("Nothing")
 
     # Close the session
     session.close()
