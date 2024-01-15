@@ -26,7 +26,8 @@ if __name__ == '__main__':
     # Set the variabe in python
     state_name = argv[4]
     # Execute query
-    query = "SELECT * FROM states WHERE name LIKE '{}%'".format(state_name)
+    query = "SELECT * FROM states WHERE BINARY name LIKE '{}%'".format(
+        state_name)
     cursor.execute(query)
     # Fetch results
     results = cursor.fetchall()
