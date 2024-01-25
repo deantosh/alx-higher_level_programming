@@ -1,0 +1,1 @@
+This python project focusses on networking and use of cURL command line tool to handle HTTP requests in a client - server model.
