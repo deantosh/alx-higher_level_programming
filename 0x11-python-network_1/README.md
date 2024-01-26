@@ -1,0 +1,1 @@
+This project focusses on how to fetch internet resources with the python package 'urllib'.  
