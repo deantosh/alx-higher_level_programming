@@ -11,7 +11,5 @@ req = Request(url)
 with urlopen(req) as response:
     # get headers
     headers = response.headers
-    # search through the list of headers
-    for header, value in headers.items():
-        if header == 'X-Request-Id':
-            print(value)
+    value = headers.get('X-Request-Id')
+    print(value)
