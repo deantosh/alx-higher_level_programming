@@ -7,13 +7,17 @@ response (decoded in utf-8).
 
 import sys
 from urllib.request import Request, urlopen
-
+from urllib.parse import urlencode
 
 if __name__ == '__main__':
     # get args
     url, email = sys.argv[1:]
 
-    data = email.encode('ascii')  # data to bytes
+    # create data as dict object
+    value = {}
+    value["email"] = email
+
+    data = urlencode(value).encode('ascii')  # data to bytes
     req = Request(url, data)
     with urlopen(req) as response:
         body = response.read().decode('utf-8')
