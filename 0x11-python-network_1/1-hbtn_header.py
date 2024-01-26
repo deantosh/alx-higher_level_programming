@@ -6,6 +6,7 @@ response.
 import sys
 from urllib.request import Request, urlopen
 
+
 if __name__ == '__main__':
     # get url passed as argument
     url = sys.argv[1]
