@@ -13,9 +13,14 @@ if __name__ == '__main__':
     if len(sys.argv) == 2:
         letter = sys.argv[1]
     url = "http://0.0.0.0:5000/search_user"
-    response = requests.post(url, data={'q': letter})
+    payload = {'q': letter}
+    response = requests.post(url, data=payload)
     try:
         data = response.json()
-        print("[{}] {}".format(data[id], data[name]))
+        if data == {}:
+            print("No result")
+        else:
+            print("[{}] {}".format(data.get('id'), data.get('name')))
+
     except JSONDecodeError:
-        print("No result")
+        print("Not a valid JSON")
