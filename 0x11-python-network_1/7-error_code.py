@@ -12,9 +12,8 @@ if __name__ == '__main__':
     try:
         url = sys.argv[1]
         response = requests.get(url)
-        # raise a HTTPError for unsuccessful status code.
-        response.raise_for_status()
-        print(response.text)
-
-    except requests.exceptions.HTTPError as e:
-        print(f"Error code: {e}")
+        status_code = response.status_code
+        if status_code >= 400:
+            print(f"Error code: {status_code}")
+        else:
+            print(response.text)
