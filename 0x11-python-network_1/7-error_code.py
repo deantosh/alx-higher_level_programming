@@ -9,9 +9,12 @@ import requests
 
 
 if __name__ == '__main__':
-    url = sys.argv[1]
-    response = requests.get(url)
-    code = response.status_code
-    if code >= 400:
-        err_msg = "Error code: {}".format(code)
-        print(err_msg)
+    try:
+        url = sys.argv[1]
+        response = requests.get(url)
+        # raise a HTTPError for unsuccessful status code.
+        response.raise_for_status()
+        print(response.text)
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error code: {e}")
