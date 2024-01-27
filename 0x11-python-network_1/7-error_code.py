@@ -16,5 +16,5 @@ if __name__ == '__main__':
         response.raise_for_status()
         print(response.text)
 
-    except requests.exceptions.RequestException as e:
+    except requests.exceptions.HTTPError as e:
         print(f"Error code: {e}")
