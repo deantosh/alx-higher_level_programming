@@ -10,17 +10,19 @@ import requests
 
 if __name__ == '__main__':
     username, password = sys.argv[1:]
-    github_url = f"https://api.github.com/users/{username}"
-    token = {'Authorization': password}
+
+    # GITHUB api users method
+    github_url = "https://api.github.com/user"
+
+    credentials = (username, password)
 
     # pass authorization header to authenticate user
-    res = requests.get(github_url, headers=token)
+    res = requests.get(github_url, auth=credentials)
 
-    # convert to json
+    # convert to JSON
     user_data = res.json()
 
     # get user id
-    id = user_data.get('id')
+    user_id = user_data.get('id')
 
-    # display id
-    print(id)
+    print(user_id)
