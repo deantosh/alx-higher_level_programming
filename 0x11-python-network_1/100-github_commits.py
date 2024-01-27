@@ -16,8 +16,12 @@ if __name__ == '__main__':
 
     commits = res.json()
 
-    for i in range(10):
-        id = commits[i].get('sha')
-        name = commits[i].get('commit').get('author').get('name')
-        res_str = "{}: {}".format(id, name)
-        print(res_str)
+    try:
+        for i in range(10):
+            id = commits[i].get('sha')
+            name = commits[i].get('commit').get('author').get('name')
+            res_str = "{}: {}".format(id, name)
+            print(res_str)
+
+    except IndexError:
+        pass  # do nothing
