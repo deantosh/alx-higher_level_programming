@@ -1,80 +1,72 @@
-Test cases for 0-addd_integer module
-------------------------------------
-------------------------------------
+-----------------------------
+-----------------------------
+ How to Use 0-add_integer.py
+-----------------------------
+-----------------------------
 
-Description: This module takes 2 integers or floating numbers and finds their sum.
+This test module is very simple, since it only has one function called
+``add_integer(a, b=98)``
 
-USAGE:
-------
-------
 
-import function from the module:
+Import module
+-------------
+-------------
+
+::
+
     >>> add_integer = __import__("0-add_integer").add_integer
 
-Case valid values:
+Valid Input
+-----------
+-----------
 
-  add two positive integers (a = 1, b = 2):
-      >>> add_integer(1, 2)
-      3
+``add_integer(a, b=98)`` returns the sum of its two arguments `a` and `b`. For numbers,
+that value is equivalent to using the ``+`` operator.
 
-  add two negative integers (a = -5, b = -3):
-      >>> add_integer(-5, -3)
-      -8
+::
 
-  add a posive and a negative integer (a = 10, b = -2):
-      >>> add_integer(26, -2)
-      24
+    >>> add_integer(1, 2)
+    3
 
-  add an integer with the default value(a = 2, b = 98):
-      >>> add_integer(2)
-      100
+It works with floating-point values by casting them to integers before addition.
 
-  add an integer with a floating number (a = 7, b = 10.8):
-      >>> add_integer(7, 10.8)
-      17
+::
 
-  add two floating numbers (a = 1.2, b = 8.8):
-      >>> add_integer(1.2, 8.8)
-      9
+    >>> add_integer(1.4, 5)
+    6
 
-Case invalid values:
+It works with both positive and negative integers.
 
-  add an integer with a string (a = 1, b = "xyz"):
-      >>> add_integer(1, "xyz")
-      Traceback (most recent call last):
-                ...
-      TypeError: b must be an integer
+::
 
-  add an integer with a list (a = [1, 2, 3], b = 10):
-      >>> add_integer([1, 2, 3], 10)
-      Traceback (most recent call last):
-                ...
-      TypeError: a must be an integer
+    >>> add_integer(-9, 11)
+    2
 
-Case NaN:
+    >>> add_integer(-2, -4)
+    -6
 
-  add NaN with the default value (a = float('nan')):
-      >>> add_integer(float('nan'))
-      Traceback (most recent call last):
-          ...
-      ValueError: cannot convert float NaN to integer
+It works with a single value passed as an input instead of two.
 
-  add NaN with an integer (a = 8, b = float("nan")):
-      >>> add_integer(8, float("nan"))
-      Traceback (most recent call last):
-          ...
-      ValueError: cannot convert float NaN to integer
+::
 
-Case Overflow:
+    >>> add_integer(2)
+    100
 
-    >>> add_integer(float('inf'), 0)
+Invalid inputs
+--------------
+--------------
+
+When working with values which are not integers or floating-point, a `TypeError` is
+raised with an exception message: a must be an integer or b must be an integer.
+
+::
+
+    >>> add_integer("name", 4)
     Traceback (most recent call last):
-    	      ...
-    OverflowError: cannot convert float infinity to integer
+      ...
+    TypeError: a must be an integer
 
-Case Overflow 2:
-
-    >>> add_integer(float('inf'), float('-inf'))
+    >>> add_integer(1.2, [1, 2])
     Traceback (most recent call last):
-    	      ...
-    OverflowError: cannot convert float infinity to integer
+      ...
+    TypeError: b must be an integer
