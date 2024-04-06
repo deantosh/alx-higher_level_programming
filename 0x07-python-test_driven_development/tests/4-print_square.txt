@@ -1,53 +1,66 @@
-Test case for 4-print_square module
------------------------------------
------------------------------------
+-----------------------------
+-----------------------------
+ How to Use 4-print_square.py
+-----------------------------
+-----------------------------
 
-Module defines a function that prints a square with the # character
+This is a simple module with one function ``print_square``.
 
-USAGE
------
------
+Inputs:
+    - size of the square
 
-``print_square(size)`` takes in the size of square and prints it.
+Output:
+    - prints the square
 
-import function from module:
+Import module
+-------------
+-------------
+
+import function
+
+::
+
     >>> print_square = __import__("4-print_square").print_square
 
-Case valid values:
+Valid inputs
+------------
+------------
 
-  parse a valid value for the square:
-        >>> print_square(2)
-	##
-	##
+case: size is an integer and is greater than 0
 
-  parse zero value (size = 0):
-    >> print_square(0)
+::
 
+    >>> print_square(2)
+    ##
+    ##
 
-Case invalid value:
+Invalid inputs
+--------------
+--------------
 
-  parse not integer value for the square (size = 3.2):
-        >>> print_square(3.2)
-	Traceback (most recent call last):
-	         ...
-	TypeError: size must be an integer
+case: size not an integer
 
-  parse a list as size value for the square (size = (1, 2)):
-        >>> print_square((1, 2))
-	Traceback (most recent call last):
-	          ...
-        TypeError: size must be an integer
+::
 
-  parse size value less than 0 for the square (size = -3):
-        >>> print_square(-3)
-	Traceback (most recent call last):
-	          ...
-	ValueError: size must be >= 0
+    >>> print_square('a')
+    Traceback (most recent call last):
+      ...
+    TypeError: size must be an integer
 
-Case no values:
+case: size is a float and less than 0
 
-  parse no value to function (size=""):
-        >>> print_square()
-	Traceback (most recent call last):
-	          ...
-	TypeError: print_square() missing 1 required positional argument: 'size'
+::
+
+    >>> print_square(-1.8)
+    Traceback (most recent call last):
+      ...
+    TypeError: size must be an integer
+
+case: size less than 0
+
+::
+
+    >>> print_square(-1)
+    Traceback (most recent call last):
+      ...
+    ValueError: size must be >= 0
