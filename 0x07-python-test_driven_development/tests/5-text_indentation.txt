@@ -1,0 +1,53 @@
+---------------------------------
+---------------------------------
+ How to Use 5-text_indentation.py
+---------------------------------
+---------------------------------
+
+This is a simple module that contains only a single function ``text_indentation()``.
+
+Inputs:
+    - text
+
+Output:
+    - creates a new text and 2 new lines when it encounters these separators (., ?, :)
+
+Import module
+-------------
+-------------
+
+::
+
+    >>> text_indentation = __import__("5-text_indentation").text_indentation
+
+Valid Inputs
+------------
+------------
+
+case: text is a string
+
+::
+
+    >>> text = """My name is Deantosh, I am 28 years old. I love engineering because I am a petroleum engineer by profession : I love to code because it is cool. What do you love to do?"""
+    >>> text_indentation(text)
+    My name is Deantosh, I am 28 years old.
+    <BLANKLINE>
+    I love engineering because I am a petroleum engineer by profession :
+    <BLANKLINE>
+    I love to code because it is cool.
+    <BLANKLINE>
+    What do you love to do?
+
+
+Invalid inputs
+--------------
+--------------
+
+case: text not a string
+
+::
+
+    >>> text_indentation([1, 2, 3, 4, 5])
+    Traceback (most recent call last):
+      ...
+    TypeError: text must be a string
