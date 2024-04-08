@@ -11,3 +11,4 @@ This project contains series of tasks aimed at understanding python classes.
  3. Task 2 - add public instance method area and perimeter of the rectangle.
  4. Task 3 - add __str__ method that prints the rectangle.
  5. Task 4 - add __repr__ method that is able to recreate a new instance.  
+ 6. Task 5 - deletes an instance of a ``Rectangle`` class.
