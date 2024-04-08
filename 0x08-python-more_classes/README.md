@@ -14,4 +14,8 @@ This project contains series of tasks aimed at understanding python classes.
  6. Task 5 - deletes an instance of a ``Rectangle`` class.
  7. Task 6 - adds a public class attribute to ``Rectangle`` class
              modify the __init__ method to add it when object is created
-             modify the __del__ method to reduce it when the object is deleted 
+             modify the __del__ method to reduce it when the object is deleted
+ 8. Task 7 - add a public class attribute print_symbol, that is used to change symbol
+             when printing the rectangle.
+             modify the __str__ to include print_symbol
+
