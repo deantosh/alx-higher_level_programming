@@ -19,6 +19,12 @@ Requirements:
                 message height must be >= 0
  3. Instantiation with optional width and height: def __init__(self, width=0,
     height=0):
+ 4. Public instance method: def area(self): that returns the rectangle area
+ 5. Public instance method: def perimeter(self): that returns the rectangle
+    perimeter:
+      - if width or height is equal to 0, perimeter has to be equal to 0
+ 6. print() and str() should print the rectangle with the character #:
+      - if width or height is equal to 0, return an empty string
 """
 
 
