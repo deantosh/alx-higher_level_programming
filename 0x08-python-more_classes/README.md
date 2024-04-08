@@ -18,4 +18,4 @@ This project contains series of tasks aimed at understanding python classes.
  8. Task 7 - add a public class attribute print_symbol, that is used to change symbol
              when printing the rectangle.
              modify the __str__ to include print_symbol
-
+ 9. Task 8 - add a static method that compares two rectanges and returns the biggest.
