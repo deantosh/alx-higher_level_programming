@@ -20,14 +20,14 @@ Valid inputs
 ------------
 ------------
 
-It works with an integer matrix
+Test an integer matrix
 
 ::
 
     >>> matrix_divided([[2, 4],[6, 8]], 2)
     [[1.0, 2.0], [3.0, 4.0]]
 
-It works with a matrix with floating point values
+Test matrix with floating point values
 
 ::
 
@@ -38,7 +38,7 @@ Invalid inputs
 --------------
 --------------
 
-It raises an error if matrix is not a list of lists of integers
+Test matrix is not a list of lists of integers
 
 ::
 
@@ -47,7 +47,7 @@ It raises an error if matrix is not a list of lists of integers
       ...
     TypeError: matrix must be a matrix (list of lists) of integers/floats
 
-It raises an error if matrix is  a list of lists of integers and other types of data
+Test matrix is  a list of lists of integers and other types of data
 
 ::
 
@@ -56,7 +56,7 @@ It raises an error if matrix is  a list of lists of integers and other types of 
       ...
     TypeError: matrix must be a matrix (list of lists) of integers/floats
 
-It raises an error if matrix row size is not equal
+Test matrix row size is not equal
 
 ::
 
@@ -65,7 +65,7 @@ It raises an error if matrix row size is not equal
       ...
     TypeError: Each row of the matrix must have the same size
 
-It raises an error if div is not a number (int or float)
+Test div is not a number (int or float)
 
 ::
 
@@ -74,7 +74,7 @@ It raises an error if div is not a number (int or float)
       ...
     TypeError: div must be a number
 
-It raise an error is div is zero
+Test div is zero
 
 ::
 
@@ -82,3 +82,28 @@ It raise an error is div is zero
     Traceback (most recent call last):
       ...
     ZeroDivisionError: division by zero
+
+Test no arguments passed
+
+::
+
+    >>> matrix_divided()
+    Traceback (most recent call last):
+      ...
+    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+Test one argument passed
+
+::
+
+    >>> matrix_divided([[1, 2],[4, 6]])
+    Traceback (most recent call last):
+      ...
+    TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+Test Overflow -  div (infinity value)
+
+::
+
+    >>> matrix_divided([[4, 4, 6], [1, 2, 4]], float('inf'))
+    [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
