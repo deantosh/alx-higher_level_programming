@@ -70,3 +70,30 @@ raised with an exception message: a must be an integer or b must be an integer.
     Traceback (most recent call last):
       ...
     TypeError: b must be an integer
+
+It doesn't work  with zero arguments
+
+::
+
+    >>> add_integer()
+    Traceback (most recent call last):
+      ...
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+It does not work with a float overflow (infinite values)_
+
+::
+
+    >>> add_integer(float('inf'), float('-inf'))
+    Traceback (most recent call last):
+      ...
+    OverflowError: cannot convert float infinity to integer
+
+It does not work with NaN 
+
+::
+
+    >>> add_integer(float('nan'))
+    Traceback (most recent call last):
+      ...
+    ValueError: cannot convert float NaN to integer
