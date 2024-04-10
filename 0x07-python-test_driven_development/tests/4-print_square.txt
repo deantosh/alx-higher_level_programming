@@ -72,4 +72,4 @@ case: no arguments
     >>> print_square()
     Traceback (most recent call last):
       ...
-    TypeError: print_square() 1 required positional argument: 'size'
+    TypeError: print_square() missing 1 required positional argument: 'size'
