@@ -64,3 +64,12 @@ case: size less than 0
     Traceback (most recent call last):
       ...
     ValueError: size must be >= 0
+
+case: no arguments
+
+::
+
+    >>> print_square()
+    Traceback (most recent call last):
+      ...
+    TypeError: print_square() 1 required positional argument: 'size'
