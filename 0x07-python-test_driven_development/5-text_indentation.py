@@ -11,7 +11,8 @@ def text_indentation(text):
     # validate input
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    modified_text = text.replace('.', '.\n').replace(':', ':\n').replace('?', '?\n')
+    modified_text = text.replace(
+                        '.', '.\n').replace(':', ':\n').replace('?', '?\n')
     lines = modified_text.splitlines()
 
     size = len(lines)
