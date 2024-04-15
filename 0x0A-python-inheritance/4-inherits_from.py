@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-"""
-Script defines a function that checks if an instance of a class that inherited
-(directly or indirectly) from the specified class.
+"""checks if object is an instance of a class that
+inherited from the specified class or not
 """
 
 
