@@ -1,0 +1,71 @@
+-------------------------------------
+-------------------------------------
+How to Use ``7-base_geometry`` module
+-------------------------------------
+-------------------------------------
+
+This is a simple module that has a single class ``BaseGeometry``. This base class
+defines common methods to be inherited by its subclasses.
+
+Import module
+-------------
+-------------
+
+Import the class to be tested from module
+
+::
+
+    >>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+
+Object
+------
+------
+
+case: create object
+
+::
+
+    >>> my_obj = BaseGeometry()
+
+Object method
+-------------
+-------------
+
+case: test area method
+
+::
+
+    >>> my_obj.area()
+    Traceback (most recent call last):
+      ...
+    Exception: area() is not implemented
+
+
+case: test integer_validator method with (value is integer)
+
+::
+
+    >>> my_obj.integer_validator('age', 21)
+
+case: test integer_validator method with (value is not integer)
+
+::
+
+    >>> my_obj.integer_validator('age', [1, 2])
+    Traceback (most recent call last):
+      ...
+    TypeError: age must be an integer
+
+case: test integer_validator method with (value <= 0)
+
+::
+
+    >>> my_obj.integer_validator('age', -1)
+    Traceback (most recent call last):
+      ...
+    ValueError: age must be greater than 0
+
+    >>> my_obj.integer_validator('age', 0)
+    Traceback (most recent call last):
+      ...
+    ValueError: age must be greater than 0
