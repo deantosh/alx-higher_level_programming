@@ -31,6 +31,13 @@ Object method
 -------------
 -------------
 
+Tests for BaseGeometry public instance method area and integer_validator.
+
+area
+----
+
+``area()`` is not implemented but raises an exception when accessed.
+
 case: test area method
 
 ::
@@ -41,13 +48,34 @@ case: test area method
     Exception: area() is not implemented
 
 
-case: test integer_validator method with (value is integer)
+integer_validator
+-----------------
+
+``integer_validator()`` validates the values of the attribute.
+
+case: test no arguments passed
+
+::
+
+    >>> my_obj.integer_validator()
+    Traceback (most recent call last):
+      ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+case: 1 argument passed
+
+    >>> my_obj.integer_validator("age")
+    Traceback (most recent call last):
+      ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+case: 2 arguments (name and value) passed.
 
 ::
 
     >>> my_obj.integer_validator('age', 21)
 
-case: test integer_validator method with (value is not integer)
+case: value not integer
 
 ::
 
@@ -56,7 +84,32 @@ case: test integer_validator method with (value is not integer)
       ...
     TypeError: age must be an integer
 
-case: test integer_validator method with (value <= 0)
+    >>> my_obj.integer_validator("age", "4")
+    Traceback (most recent call last):
+      ...
+    TypeError: age must be an integer
+
+    >>> my_obj.integer_validator("age", (2,))
+    Traceback (most recent call last):
+      ...
+    TypeError: age must be an integer
+
+    >>> my_obj.integer_validator("age", True)
+    Traceback (most recent call last):
+      ...
+    TypeError: age must be an integer
+
+    >>> my_obj.integer_validator("age", {3, 4})
+    Traceback (most recent call last):
+      ...
+    TypeError: age must be an integer
+
+    >>> my_obj.integer_validator("age", None)
+    Traceback (most recent call last):
+      ...
+    TypeError: age must be an integer
+
+case: value <= 0
 
 ::
 
