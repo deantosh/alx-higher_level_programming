@@ -15,9 +15,10 @@ def class_to_json(obj):
 
     obj_dict = {}
 
-    # get list object attributes
+    # get list of available object attributes
     attr_dict = obj.__dict__
 
+    # find and add only values that are serializable
     for key, value in attr_dict.items():
         if isinstance(value, (list, dict, str, int, bool)):
             obj_dict[key] = value
