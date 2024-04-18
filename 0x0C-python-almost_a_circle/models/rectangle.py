@@ -113,9 +113,15 @@ class Rectangle(Base):
         return (self.__width * self.__height)
 
     def display(self):
-        """prints the rectangle"""
+        """prints the rectangle, take into account (x, y) attributes"""
         rect = ""
+        if self.__y:
+            for k in range(self.__y):
+                rect += "\n"
         for i in range(self.__height):
+            if self.__x:
+                for l in range(self.__x):
+                    rect += " "
             for j in range(self.__width):
                 rect += "#"
             rect += "\n"
