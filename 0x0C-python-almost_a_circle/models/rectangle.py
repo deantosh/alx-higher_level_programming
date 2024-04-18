@@ -26,6 +26,8 @@ Requirements:
  - Add public instance method ``area``, which return area of rectangle.
  - Add public method ``display``, that prints to stdout the Rectangle with
    character '#'.
+ - Override the __str__ method so that it returns in the below format:
+       -> [Rectangle] (<id>) <x>/<y> - <width>/<height>
 """
 from models.base import Base
 
@@ -118,3 +120,9 @@ class Rectangle(Base):
                 rect += "#"
             rect += "\n"
         print(rect, end="")
+
+    def __str__(self):
+        """returns an informal string representation of the object"""
+        obj_str = f"[Rectangle] (\
+{self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
+        return obj_str
