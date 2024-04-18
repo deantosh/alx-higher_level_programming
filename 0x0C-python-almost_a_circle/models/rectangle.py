@@ -23,6 +23,7 @@ Requirements:
        must be > 0
     2. If x or y is under 0, raise the ValueError exception with the message:
        <name of the attribute> must be >= 0. Example: x must be >= 0
+ - Add public instance method area, which return area of rectangle.
 """
 from models.base import Base
 
@@ -102,3 +103,7 @@ class Rectangle(Base):
         """sets the y value"""
         Rectangle.validate_input("y", value)
         self.__y = value
+
+    def area(self):
+        """returns: area of a rectangle"""
+        return (self.__width * self.__height)
