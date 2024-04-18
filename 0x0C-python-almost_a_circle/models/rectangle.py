@@ -14,6 +14,15 @@ Requirements:
  - Call the super class with id - this super call with use the logic of the
    __init__ of the Base class
  - Assign each argument width, height, x and y to the right attribute
+ - Validate all the attributes setter methods:
+    0. If the input is not an integer, raise the TypeError exception with the
+       message: <name of the attribute> must be an integer. Example: width must
+       be an integer
+    1. If width or height is under or equals 0, raise the ValueError exception
+       with the message: <name of the attribute> must be > 0. Example: width
+       must be > 0
+    2. If x or y is under 0, raise the ValueError exception with the message:
+       <name of the attribute> must be >= 0. Example: x must be >= 0
 """
 from models.base import Base
 
@@ -24,6 +33,12 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         """initializes the class"""
 
+        # validate input
+        Rectangle.validate_input("width", width)
+        Rectangle.validate_input("height", height)
+        Rectangle.validate_input("x", x)
+        Rectangle.validate_input("y", y)
+
         # call __init__ method from the base class
         super().__init__(id)
 
@@ -33,6 +48,17 @@ class Rectangle(Base):
         self.__y = y
 
     # setter and getter methods for instance attributes
+
+    @staticmethod
+    def validate_input(attr, value):
+        """validates the inputs and raises TypeError if not correct format"""
+        if not isinstance(value, int):
+            raise TypeError(f"{attr} must be an integer")
+        if (attr == 'width' or attr == 'height') and value <= 0:
+            raise ValueError(f"{attr} must be > 0")
+        if (attr == 'x' or attr == 'y') and value < 0:
+            raise ValueError(f"{attr} must be >= 0")
+
     @property
     def width(self):
         """retrieves the width"""
@@ -41,6 +67,7 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """sets the width value"""
+        Rectangle.validate_input("width", value)
         self.__width = value
 
     @property
@@ -51,6 +78,7 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         """sets the height value"""
+        Rectangle.validate_input("height", value)
         self.__height = value
 
     @property
@@ -61,6 +89,7 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         """sets the x value"""
+        Rectangle.validate_input("x", value)
         self.__x = value
 
     @property
@@ -71,4 +100,5 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """sets the y value"""
+        Rectangle.validate_input("y", value)
         self.__y = value
