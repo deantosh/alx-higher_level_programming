@@ -15,6 +15,12 @@ Requirements:
           same behavior in case of wrong data
  - The overloading __str__ method should return [Square] (<id>) <x>/<y> -
    <size> in our case, width or height
+ - Update the class Square by adding the public getter and setter size
+       -> The setter should assign (in this order) the width and the height -
+          with the same value
+       -> The setter should have the same value validation as the Rectangle for
+          width and height - No need to change the exception error message (It
+          should be the one from width)
 """
 from models.rectangle import Rectangle
 
@@ -31,3 +37,18 @@ class Square(Rectangle):
  ({self.id}) {self._Rectangle__x}/{self._Rectangle__y}\
  - {self._Rectangle__width}"
         return str
+
+    @property
+    def size(self):
+        """retrieves the size of the square"""
+        return self._Rectangle__width
+
+    @size.setter
+    def size(self, value):
+        """sets the value of the size of the square"""
+
+        # validate value of size attribute
+        self.validate_input("width", value)
+
+        self._Rectangle__width = value
+        self._Rectangle__height = value
