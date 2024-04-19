@@ -28,6 +28,7 @@ Requirements:
    character '#'.
  - Override the __str__ method so that it returns in the below format:
        -> [Rectangle] (<id>) <x>/<y> - <width>/<height>
+ - Add public method ``update`` that assigns argument to each attribute.
 """
 from models.base import Base
 
@@ -132,3 +133,19 @@ class Rectangle(Base):
         obj_str = f"[Rectangle] (\
 {self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
         return obj_str
+
+    def update(self, *args):
+        """updates values of object attributes"""
+
+        num_args = len(args)
+
+        if num_args > 0:
+            setattr(self, 'id', args[0])
+        if num_args > 1:
+            setattr(self, 'width', args[1])
+        if num_args > 2:
+            setattr(self, 'height', args[2])
+        if num_args > 3:
+            setattr(self, 'x', args[3])
+        if num_args > 4:
+            setattr(self, 'y', args[4])
