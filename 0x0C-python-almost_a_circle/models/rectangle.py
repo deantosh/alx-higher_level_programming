@@ -28,7 +28,8 @@ Requirements:
    character '#'.
  - Override the __str__ method so that it returns in the below format:
        -> [Rectangle] (<id>) <x>/<y> - <width>/<height>
- - Add public method ``update`` that assigns argument to each attribute.
+ - Add public method ``update`` that assigns argument to each attribute. By
+   using *args and **kwargs.
 """
 from models.base import Base
 
@@ -134,12 +135,15 @@ class Rectangle(Base):
 {self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
         return obj_str
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """updates values of object attributes"""
+        if args:
+            attr_list = ['id', 'width', 'height', 'x', 'y']
+            i = 0
 
-        attr_list = ['id', 'width', 'height', 'x', 'y']
-        i = 0
-
-        for arg in args:
-            setattr(self, attr_list[i], args[i])
-            i += 1
+            for arg in args:
+                setattr(self, attr_list[i], args[i])
+                i += 1
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
