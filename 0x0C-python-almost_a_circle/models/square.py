@@ -44,25 +44,22 @@ class Square(Rectangle):
 
     def __str__(self):
         """prints informal string representation of Square class"""
-        str = f"[Square]\
- ({self.id}) {self._Rectangle__x}/{self._Rectangle__y}\
- - {self._Rectangle__width}"
+        str = f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
         return str
 
     @property
     def size(self):
         """retrieves the size of the square"""
-        return self._Rectangle__width
+        size = self.width
+        return size
 
     @size.setter
     def size(self, value):
         """sets the value of the size of the square"""
 
-        # validate value of size attribute
-        self.validate_input("width", value)
-
-        self._Rectangle__width = value
-        self._Rectangle__height = value
+        # invoke the setter methods
+        self.width = value
+        self.height = value
 
     def update(self, *args, **kwargs):
         """update attribute values in square object"""
@@ -74,24 +71,14 @@ class Square(Rectangle):
         if args:
             # handle args
             attr_list = ['id', 'size', 'x', 'y']
-            num_args = len(args)
-
-            # validate input
-            for i in range(num_args):
-                self.validate_input(attr_list[0], args[i])
-
-            if num_args > 0:
-                self.id = args[0]
-            if num_args > 1:
-                self._Rectangle__width = args[1]
-                self._Rectangle__height = args[1]
-            if num_args > 2:
-                self._Rectangle__x = args[2]
-            if num_args > 3:
-                self._Rectangle__y = args[3]
+            for i, arg in enumerate(args):
+                if i == 1:
+                    setattr(self, 'width', arg)
+                    setattr(self, 'height', arg)
+                else:
+                    setattr(self, attr_list[i], arg)
         else:
             # handle kwargs
             for key, value in kwargs.items():
-                if key not in kwargs:
-                    continue
-                setattr(self, key, value)
+                if key in kwargs:
+                    setattr(self, key, value)

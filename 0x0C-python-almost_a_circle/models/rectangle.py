@@ -30,6 +30,8 @@ Requirements:
        -> [Rectangle] (<id>) <x>/<y> - <width>/<height>
  - Add public method ``update`` that assigns argument to each attribute. By
    using *args and **kwargs.
+ - Update the class Rectangle by adding the public method def to_dictionary(
+   self): that returns the dictionary representation of a Rectangle:
 """
 from models.base import Base
 
@@ -40,19 +42,14 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         """initializes the class"""
 
-        # validate input
-        Rectangle.validate_input("width", width)
-        Rectangle.validate_input("height", height)
-        Rectangle.validate_input("x", x)
-        Rectangle.validate_input("y", y)
-
         # call __init__ method from the base class
         super().__init__(id)
 
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        # invoke the setter methods
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
 
     # setter and getter methods for instance attributes
 
@@ -117,33 +114,41 @@ class Rectangle(Base):
     def display(self):
         """prints the rectangle, take into account (x, y) attributes"""
         rect = ""
-        if self.__y:
-            for k in range(self.__y):
+        if self.y:
+            for k in range(self.y):
                 rect += "\n"
-        for i in range(self.__height):
-            if self.__x:
-                for l in range(self.__x):
+        for i in range(self.height):
+            if self.x:
+                for l in range(self.x):
                     rect += " "
-            for j in range(self.__width):
+            for j in range(self.width):
                 rect += "#"
             rect += "\n"
         print(rect, end="")
 
     def __str__(self):
         """returns an informal string representation of the object"""
-        obj_str = f"[Rectangle] (\
-{self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
+        obj_str = f"[Rectangle] ({self.id}) {self.x}/{self.y} -\
+ {self.width}/{self.height}"
         return obj_str
 
     def update(self, *args, **kwargs):
         """updates values of object attributes"""
+        attr_list = ['id', 'width', 'height', 'x', 'y']
         if args:
-            attr_list = ['id', 'width', 'height', 'x', 'y']
-            i = 0
-
-            for arg in args:
-                setattr(self, attr_list[i], args[i])
-                i += 1
+            for i, arg in enumerate(args):
+                setattr(self, attr_list[i], arg)
         else:
             for key, value in kwargs.items():
-                setattr(self, key, value)
+                if key in attr_list:
+                    setattr(self, key, value)
+
+    def to_dictionary(self):
+        """return dictionary representation of a Rectangle object"""
+        my_dict = {}
+        my_dict['id'] = self.id
+        my_dict['width'] = self.width
+        my_dict['height'] = self.height
+        my_dict['x'] = self.x
+        my_dict['y'] = self.y
+        return my_dict
