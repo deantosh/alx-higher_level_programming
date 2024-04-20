@@ -66,6 +66,11 @@ class Square(Rectangle):
 
     def update(self, *args, **kwargs):
         """update attribute values in square object"""
+
+        # if both args and kwargs are empty
+        if not args and not kwargs:
+            return None
+
         if args:
             # handle args
             attr_list = ['id', 'size', 'x', 'y']
