@@ -11,7 +11,15 @@ Requirements:
    to test the type of it
  - otherwise, increment __nb_objects and assign the new value to the
    public instance attribute id
+ - Update the class Base by adding the static method def to_json_string(
+   list_dictionaries): that returns the JSON string representation of
+   list_dictionaries:
+      -> list_dictionaries is a list of dictionaries
+      -> If list_dictionaries is None or empty, return the string: "[]"
+      -> Otherwise, return the JSON string representation of list_
+         dictionaries
 """
+import json
 
 
 class Base:
@@ -25,3 +33,13 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """returns: a JSON string representation of list_dictionaries"""
+        if list_dictionaries is None or not list_dictionaries:
+            return "[]"
+        json_str = ""
+        for dict in list_dictionaries:
+            json_str += json.dumps(dict)
+        return json_str
