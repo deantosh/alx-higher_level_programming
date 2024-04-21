@@ -18,6 +18,15 @@ Requirements:
       -> If list_dictionaries is None or empty, return the string: "[]"
       -> Otherwise, return the JSON string representation of list_
          dictionaries
+ - Update the class Base by adding the class method def save_to_file(
+   cls, list_objs): that writes the JSON string representation of
+   list_objs to a file:
+      -> list_objs is a list of instances who inherits of Base - example
+         : list of Rectangle or list of Square instances
+      -> If list_objs is None, save an empty list
+      -> The filename must be: <Class name>.json - example: Rectangle.json
+      -> You must use the static method to_json_string (created before)
+      -> You must overwrite the file if it already exists
 """
 import json
 
@@ -39,7 +48,27 @@ class Base:
         """returns: a JSON string representation of list_dictionaries"""
         if list_dictionaries is None or not list_dictionaries:
             return "[]"
-        json_str = ""
+
+        json_list = []
         for dict in list_dictionaries:
-            json_str += json.dumps(dict)
-        return json_str
+            try:
+                json_list.append(json.dumps(dict))
+            except TypeError:
+                pass
+        return '[' + ", ".join(json_list) + ']'
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """returns: JSON string representation of list_objs to a file"""
+        filename = f"{cls.__name__}.json"
+
+        # create list of dictionaries from list of object
+        list_dictionaries = []
+        for obj in list_objs:
+            obj_dict = obj.to_dictionary()
+            list_dictionaries.append(obj_dict)
+
+        # get the JSON string
+        json_str = Base.to_json_string(list_dictionaries)
+        with open(filename, 'w') as file:
+            file.write(json_str)
