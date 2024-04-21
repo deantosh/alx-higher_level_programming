@@ -27,6 +27,12 @@ Requirements:
       -> The filename must be: <Class name>.json - example: Rectangle.json
       -> You must use the static method to_json_string (created before)
       -> You must overwrite the file if it already exists
+ - Update the class Base by adding the static method def from_json_string
+   (json_string): that returns the list of the JSON string representation
+   json_string:
+      -> json_string is a string representing a list of dictionaries
+      -> If json_string is None or empty, return an empty list
+      -> Otherwise, return the list represented by json_string
 """
 import json
 
@@ -56,6 +62,13 @@ class Base:
             except TypeError:
                 pass
         return '[' + ", ".join(json_list) + ']'
+
+    @staticmethod
+    def from_json_string(json_string):
+        """returns: an object dictionary from a json string"""
+        if json_string is None or not json_string:
+            return []
+        return json.loads(json_string)
 
     @classmethod
     def save_to_file(cls, list_objs):
