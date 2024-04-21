@@ -45,6 +45,14 @@ Requirements:
       -> You must use the method def update(self, *args, **kwargs)
       -> **dictionary must be used as **kwargs of the method update
       -> You are not allowed to use eval
+ - Update the class Base by adding the class method def load_from_file(cls):
+   that returns a list of instances:
+      -> The filename must be: <Class name>.json - example: Rectangle.json
+      -> If the file doesn’t exist, return an empty list
+      -> Otherwise, return a list of instances - the type of these instances
+         depends on cls (current class using this method)
+      -> You must use the from_json_string and create methods (implemented
+         previously)
 """
 import json
 
@@ -106,3 +114,20 @@ class Base:
         # call update to pass real values
         obj.update(**dictionary)
         return obj
+
+    @classmethod
+    def load_from_file(cls):
+        """returns: a list of instances"""
+        filename = f"{cls.__name__}.json"
+        instances = []
+        try:
+            with open(filename, 'r') as file:
+                json_string = file.read()
+                # convert JSON string to list of object dictionaries
+                list_obj_dict = cls.from_json_string(json_string)
+                for obj_dict in list_obj_dict:
+                    instance = cls.create(**obj_dict)
+                    instances.append(instance)
+                return instances
+        except FileNotFoundError:
+            return []
