@@ -33,6 +33,18 @@ Requirements:
       -> json_string is a string representing a list of dictionaries
       -> If json_string is None or empty, return an empty list
       -> Otherwise, return the list represented by json_string
+ - Update the class Base by adding the class method def create(cls,
+   **dictionary): that returns an instance with all attributes already set:
+      -> **dictionary can be thought of as a double pointer to a dictionary
+      -> To use the update method to assign all attributes, you must create
+         a “dummy” instance before:
+          x. Create a Rectangle or Square instance with “dummy” mandatory
+             attributes (width, height, size, etc.)
+          x. Call update instance method to this “dummy” instance to apply
+             your real values
+      -> You must use the method def update(self, *args, **kwargs)
+      -> **dictionary must be used as **kwargs of the method update
+      -> You are not allowed to use eval
 """
 import json
 
@@ -85,3 +97,12 @@ class Base:
         json_str = Base.to_json_string(list_dictionaries)
         with open(filename, 'w') as file:
             file.write(json_str)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """returns an object with all attributes already set"""
+        # create dummy object
+        obj = cls(3, 5, 2)
+        # call update to pass real values
+        obj.update(**dictionary)
+        return obj
