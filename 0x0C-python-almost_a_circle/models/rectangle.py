@@ -117,7 +117,7 @@ class Rectangle(Base):
                 rect += "\n"
         for i in range(self.height):
             if self.x:
-                for l in range(self.x):
+                for i in range(self.x):
                     rect += " "
             for j in range(self.width):
                 rect += "#"
