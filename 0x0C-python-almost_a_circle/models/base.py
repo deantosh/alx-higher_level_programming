@@ -122,7 +122,10 @@ class Base:
     def create(cls, **dictionary):
         """returns an object with all attributes already set"""
         # create dummy object
-        obj = cls(3, 5)
+        if cls.__name__ == 'Rectangle':
+            obj = cls(3, 5)
+        if cls.__name__ == 'Square':
+            obj = cls(3)
         # call update to pass real values
         obj.update(**dictionary)
         return obj
