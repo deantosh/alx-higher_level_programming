@@ -53,8 +53,17 @@ Requirements:
          depends on cls (current class using this method)
       -> You must use the from_json_string and create methods (implemented
          previously)
+ - Update the class Base by adding the class methods def save_to_file_csv(cls,
+   list_objs): and def load_from_file_csv(cls): that serializes and
+   deserializes in CSV:
+      -> The filename must be: <Class name>.csv - example: Rectangle.csv
+      -> Has the same behavior as the JSON serialization/deserialization
+      -> Format of the CSV:
+             x. Rectangle: <id>,<width>,<height>,<x>,<y>
+             x. Square: <id>,<size>,<x>,<y>
 """
 import json
+import csv
 
 
 class Base:
@@ -117,7 +126,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """returns: a list of instances"""
+        """returns: a list of instances from a text file"""
         filename = f"{cls.__name__}.json"
         instances = []
         try:
@@ -129,5 +138,52 @@ class Base:
                     instance = cls.create(**obj_dict)
                     instances.append(instance)
                 return instances
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objects):
+        """saves a list of objects to csv file"""
+        filename = f"{cls.__name__}.csv"
+
+        # convert list of object to list of dictionary
+        list_objs_dict = []
+        for obj in list_objects:
+            obj_dict = obj.to_dictionary()
+            list_objs_dict.append(obj_dict)
+
+        # extract the header for the data
+        obj = list_objs_dict[0]
+        headers = obj.keys()
+
+        with open(filename, 'w', newline='') as csvfile:
+            # create Writer object
+            writer = csv.DictWriter(csvfile, fieldnames=headers)
+
+            # write header
+            writer.writeheader()
+
+            # write data rows
+            for row in list_objs_dict:
+                writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """returns:  a list of instances from csv file"""
+        filename = f"{cls.__name__}.csv"
+        instances = []
+        try:
+            with open(filename, 'r') as csvfile:
+                # create a Reader object
+                reader = csv.DictReader(csvfile)
+
+                # read every row in the csvfile
+                for row in reader:
+                    modified_dict = {}
+                    for key, value in row.items():
+                        modified_dict[key] = int(value)
+                    instance = cls.create(**modified_dict)
+                    instances.append(instance)
+            return instances
         except FileNotFoundError:
             return []
