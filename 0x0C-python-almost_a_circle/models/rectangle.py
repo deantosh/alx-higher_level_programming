@@ -51,8 +51,6 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
-    # setter and getter methods for instance attributes
-
     @staticmethod
     def validate_input(attr, value):
         """validates the inputs and raises TypeError if not correct format"""
@@ -109,7 +107,7 @@ class Rectangle(Base):
 
     def area(self):
         """returns: area of a rectangle"""
-        return (self.__width * self.__height)
+        return (self.width * self.height)
 
     def display(self):
         """prints the rectangle, take into account (x, y) attributes"""
