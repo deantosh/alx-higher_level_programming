@@ -122,7 +122,7 @@ class Base:
     def create(cls, **dictionary):
         """returns an object with all attributes already set"""
         # create dummy object
-        obj = cls(3, 5, 2)
+        obj = cls(3, 5)
         # call update to pass real values
         obj.update(**dictionary)
         return obj
