@@ -56,7 +56,7 @@ class Rectangle(Base):
     @staticmethod
     def validate_input(attr, value):
         """validates the inputs and raises TypeError if not correct format"""
-        if not isinstance(value, int):
+        if (type(value) is not int):
             raise TypeError(f"{attr} must be an integer")
         if (attr == 'width' or attr == 'height') and value <= 0:
             raise ValueError(f"{attr} must be > 0")
