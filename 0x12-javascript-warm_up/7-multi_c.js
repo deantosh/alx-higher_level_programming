@@ -1,4 +1,5 @@
 #!/usr/bin/node
+// Script prints x times "C is fun".
 if (process.argv[2]) {
   const num = process.argv[2];
   for (let i = 0; i < num; i++) {
