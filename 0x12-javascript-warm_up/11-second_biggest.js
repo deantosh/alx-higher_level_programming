@@ -1,4 +1,5 @@
 #!/usr/bin/node
+// Script searches the second biggest integer in the list of arguments.
 const len = process.argv.length;
 if (len > 3) {
   const numArray = [];
