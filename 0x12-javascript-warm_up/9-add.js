@@ -1,4 +1,5 @@
 #!/usr/bin/node
+// Script prints the addition of 2 integers.
 if (process.argv.length === 4) {
   const num1 = parseInt(process.argv[2]);
   const num2 = parseInt(process.argv[3]);
