@@ -1,4 +1,5 @@
 #!/usr/bin/node
+// Script computes and prints a factorial.
 function factorial (n) {
   if (n === 0 || n === 1) {
     return 1;
