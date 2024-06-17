@@ -1,4 +1,5 @@
 #!/usr/bin/node
+// Script prints a square
 if (process.argv[2]) {
   const num = parseInt(process.argv[2]);
   if (isNaN(num)) {
