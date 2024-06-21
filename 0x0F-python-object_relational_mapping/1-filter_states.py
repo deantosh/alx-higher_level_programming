@@ -35,7 +35,7 @@ if __name__ == '__main__':
     query = f"""
              SELECT *
              FROM states
-             WHERE states.name
+             WHERE BINARY states.name
              LIKE 'N%'
              ORDER BY states.id ASC
              """
