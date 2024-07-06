@@ -1,5 +1,12 @@
 #!/usr/bin/python3
-
+"""
+Script that fetches `https://alx-intranet.hbtn.io/status`
+  Requirements:
+    - Only import package urllib
+    - The body of the response must be displayed like the following
+     example (tabulation before -)
+    - Must use `with` statement
+"""
 from urllib.request import Request, urlopen
 
 req = Request("https://alx-intranet.hbtn.io/status")
