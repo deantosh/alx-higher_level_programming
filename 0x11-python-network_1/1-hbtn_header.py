@@ -1,7 +1,10 @@
 #!/usr/bin/python3
-"""Script takes in a URL, sends a request to the URL and displays\
-the value of the X-Request-Id variable found in the header of the\
-response.
+"""
+Script takes in a URL, sends a request to the URL and displays the
+value of the X-Request-Id variable found in the header of the response.
+Requirements:
+  - You are not allow to import packages other than urllib and sys
+  - You must use a with statement
 """
 import sys
 from urllib.request import Request, urlopen
@@ -10,9 +13,7 @@ from urllib.request import Request, urlopen
 if __name__ == '__main__':
     # get url passed as argument
     url = sys.argv[1]
-
     req = Request(url)
-
     with urlopen(req) as response:
         # get headers
         headers = response.headers
