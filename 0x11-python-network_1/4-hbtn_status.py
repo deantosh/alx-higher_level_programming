@@ -1,7 +1,10 @@
 #!/usr/bin/python3
-"""Script fetches 'https://alx-intranet.hbtn.io/status'.
 """
-
+Script fetches https://alx-intranet.hbtn.io/status.
+Requirements:
+  - You must use the package requests
+  - You are not allow to import packages other than requests
+"""
 import requests
 
 
