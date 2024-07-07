@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """
-Script takes in a URL, sends a request to the URL and displays\
+Script takes in a URL, sends a request to the URL and displays
 the value of the variable X-Request-Id in the response header.
+Requirements:
+  - You must use the packages requests and sys
 """
-
 import sys
 import requests
 
