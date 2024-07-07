@@ -1,8 +1,13 @@
 #!/usr/bin/python3
-"""script that takes in a URL, sends a request to the URL and displays\
-the body of the response (decoded in utf-8)
 """
-
+Script takes in a URL, sends a request to the URL and dipllays the body
+of the response (decoded in utf-8).
+Requirements:
+  - You have to manage urllib.error.HTTPError exceptions and print:
+      Error code: followed by the HTTP status code
+  - You are not allowed to import other packages than urllib and sys
+  - You must use the with statement
+"""
 import sys
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
