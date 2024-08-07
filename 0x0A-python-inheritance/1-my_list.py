@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-"""Defines a class that inherits from list class"""
+"""
+Module defines a class ``MyList`` that inherits from list.
+"""
 
 
 class MyList(list):
-    """creates a list"""
-
+    """defines a subclass of the list class"""
     def print_sorted(self):
-        """sort list in ascending order"""
-        new_list = self.copy()
-        new_list.sort()
-        print(new_list)
+        """prints a sorted list"""
+        print(sorted(self))

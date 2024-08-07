@@ -1,10 +1,13 @@
 #!/usr/bin/python3
-"""Converts an object into a JSON string"""
+"""
+Module defines a function that returns the JSON representation of an object.
+
+Requirement:
+ - You don’t need to manage exceptions if the object can’t be serialized.
+"""
 import json
 
 
 def to_json_string(my_obj):
-    """return:
-              json string
-    """
+    """converts object to json string"""
     return json.dumps(my_obj)

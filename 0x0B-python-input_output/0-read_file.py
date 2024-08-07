@@ -1,8 +1,14 @@
 #!/usr/bin/python3
-"""Read a text file"""
+"""
+This module contains a function that reads a file (UTF8) and prints it out to
+stdout.
+
+N:B must use ``with`` statement.
+"""
 
 
 def read_file(filename=""):
-    """Reads all the content of the file"""
-    with open(filename, encoding="utf-8") as a_file:
-        print(a_file.read(), end="")
+    """prints contents of the file to stdout"""
+    with open(filename, "r", encoding="utf-8") as file:
+        contents = file.read()
+	print(contents, end="")

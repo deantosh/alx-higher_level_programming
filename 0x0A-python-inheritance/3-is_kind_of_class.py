@@ -1,15 +1,14 @@
 #!/usr/bin/python3
-"""Module checks to see if an object is an instance
-   of both child/parent class
+"""
+Script defines a function that checks if an object is an instance of a class
+or an inherited class.
 """
 
 
 def is_kind_of_class(obj, a_class):
-    """return:
-              True if instance
-              False if not
     """
-    if isinstance(obj, a_class):
-        return True
-    else:
-        return False
+      returns:
+              - True (if an instance of a class or class it inherits from)
+              - False (if not)
+    """
+    return (isinstance(obj, a_class))

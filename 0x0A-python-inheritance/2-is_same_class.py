@@ -1,13 +1,13 @@
 #!/usr/bin/python3
-"""Module checks if object is an instance of a specified class"""
+"""
+Script defines a function that returns `True` if the object is exactly an
+instance of the specified class
+"""
 
 
 def is_same_class(obj, a_class):
-    """return:
-              True if instance
-              False if not
+    """returns:
+                - True (if is instance of a class)
+                - False (if not)
     """
-    if type(obj) == a_class:
-        return True
-    else:
-        return False
+    return (type(obj) is a_class)

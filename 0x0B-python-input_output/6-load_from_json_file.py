@@ -1,15 +1,17 @@
 #!/usr/bin/python3
-"""Creates an object from a json file"""
-from_json_string = __import__("4-from_json_string").from_json_string
+"""
+Module defines a function that creates an object from a JSON file.
+
+Requirements:
+ - You must use the with statement
+ - You don’t need to manage exceptions if the JSON string doesn’t
+   represent an object.
+ - You don’t need to manage file permissions / exceptions.
+"""
+import json
 
 
 def load_from_json_file(filename):
-    """return:
-          None
-    """
-    with open(filename, "r", encoding="utf-8") as a_file:
-        my_str = a_file.read()
-
-        my_obj = from_json_string(my_str)
-
-        return my_obj
+    """convert string from JSON file to a python object"""
+    with open(filename, "r") as file:
+        return json.load(file)
