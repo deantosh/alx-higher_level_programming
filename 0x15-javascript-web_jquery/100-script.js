@@ -1,3 +1,3 @@
-/* global $ */
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('header').style.color = '#FF0000';
 });
