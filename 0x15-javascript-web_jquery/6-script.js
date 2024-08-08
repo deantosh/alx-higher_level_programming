@@ -1,6 +1,5 @@
-/* global $ */
 $(document).ready(function () {
-  $('DIV#red_header').click(function () {
-    $('header').addClass('red');
+  $('#update_header').click(function () {
+    $('header').text('New Header!!!');
   });
 });
