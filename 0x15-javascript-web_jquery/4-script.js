@@ -1,6 +1,5 @@
-/* global $ */
 $(document).ready(function () {
-  $('DIV#toggle_header').click(function () {
+  $('#toggle_header').click(function () {
     if ($('header').hasClass('red')) {
       $('header').removeClass('red').addClass('green');
     } else {
